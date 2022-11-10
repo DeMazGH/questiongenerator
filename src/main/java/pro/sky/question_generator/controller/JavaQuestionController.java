@@ -2,6 +2,7 @@ package pro.sky.question_generator.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.question_generator.model.Question;
 import pro.sky.question_generator.service.QuestionService;
@@ -18,18 +19,23 @@ public class JavaQuestionController {
         this.service = service;
     }
 
-    @GetMapping("/add?question=QuestionText&answer=QuestionAnswer")
-    public Question addQuestion(String question, String answer) {
-        return null;
+    @GetMapping("/add")
+    public Question addQuestion(
+            @RequestParam ("question") String question,
+            @RequestParam ("answer") String answer) {
+        return service.add(question, answer);
     }
 
-    @GetMapping("remove?question=QuestionText&answer=QuestionAnswer")
-    public Question removeQuestion(String question, String answer) {
-        return null;
+    @GetMapping("remove")
+    public Question removeQuestion(
+            @RequestParam ("question") String question,
+            @RequestParam ("question") String answer) {
+        Question removedQuestion = new Question(question, answer);
+        return service.remove(removedQuestion);
     }
 
     @GetMapping()
     public Collection<Question> getQuestions() {
-        return null;
+        return service.getAll();
     }
 }
