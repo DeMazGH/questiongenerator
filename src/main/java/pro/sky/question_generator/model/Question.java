@@ -8,6 +8,9 @@ public class Question {
     private String answer;
 
     public Question(String question, String answer) {
+        validateQuestion(question);
+        validateAnswer(answer);
+
         this.question = question;
         this.answer = answer;
     }
@@ -39,5 +42,17 @@ public class Question {
                 "question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
                 '}';
+    }
+
+    private void validateQuestion(String question) {
+        if (question == null) {
+            throw new NullPointerException("Вопрос не может быть null");
+        }
+    }
+
+    private void validateAnswer(String question) {
+        if (question == null) {
+            throw new IllegalArgumentException("Ответ не может быть null");
+        }
     }
 }
