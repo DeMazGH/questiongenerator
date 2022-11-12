@@ -46,7 +46,7 @@ public class Question {
 
     private void validateQuestion(String question) {
         if (question == null) {
-            throw new NullPointerException("Вопрос не может быть null");
+            throw new IllegalArgumentException("Вопрос не может быть null");
         }
     }
 

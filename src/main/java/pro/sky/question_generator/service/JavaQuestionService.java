@@ -18,7 +18,6 @@ public class JavaQuestionService implements QuestionService {
     public Question add(String question, String answer) {
         Question newQuestion = new Question(question, answer);
         questions.add(newQuestion);
-
         return newQuestion;
     }
 
@@ -40,7 +39,7 @@ public class JavaQuestionService implements QuestionService {
     }
 
     @Override
-    public Question getRandomQestion() {
+    public Question getRandomQuestion() {
         Random random = new Random();
         Question[] questionArray = questions.toArray(new Question[0]);
         return questionArray[random.nextInt(questions.size())];
