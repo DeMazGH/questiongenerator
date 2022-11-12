@@ -1,5 +1,6 @@
 package pro.sky.question_generator.service;
 
+import org.springframework.stereotype.Service;
 import pro.sky.question_generator.exeptions.ServiceDoesNotHaveEnoughQuestionsExeption;
 import pro.sky.question_generator.model.Question;
 
@@ -7,6 +8,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Random;
 
+@Service
 public class ExaminerServiceImpl implements ExaminerService {
 
     Random random;  //Зачем?????????
