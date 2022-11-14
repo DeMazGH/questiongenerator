@@ -13,7 +13,7 @@ public class ServiceConstant {
     static String ANSWER_1 = "answer1";
     static String ANSWER_2 = "answer2";
     static String ANSWER_3 = "answer3";
-    static String ANSWER_4 = "answer5";
+    static String ANSWER_4 = "answer4";
     static String ANSWER_5 = "answer5";
     static String ANSWER_NULL = null;
 
@@ -22,5 +22,11 @@ public class ServiceConstant {
     static Question OBJ_QUESTION_3 = new Question(QUESTION_3, ANSWER_3);
     static Question OBJ_QUESTION_4 = new Question(QUESTION_4, ANSWER_4);
     static Question OBJ_QUESTION_5 = new Question(QUESTION_5, ANSWER_5);
+
+    static int AMOUNT_1 = 1;
+    static int AMOUNT_3 = 3;
+    static int AMOUNT_5 = 5;
+    static int AMOUNT_6 = 6;
+    static int AMOUNT_NEGATIVE_2 = -2;
 
 }
