@@ -10,10 +10,10 @@ import pro.sky.question_generator.service.QuestionService;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("exam/java")
+@RequestMapping("/exam/java")
 public class JavaQuestionController {
 
-    QuestionService service;
+    private final QuestionService service;
 
     public JavaQuestionController(QuestionService service) {
         this.service = service;
@@ -26,7 +26,7 @@ public class JavaQuestionController {
         return service.add(question, answer);
     }
 
-    @GetMapping("remove")
+    @GetMapping("/remove")
     public Question removeQuestion(
             @RequestParam ("question") String question,
             @RequestParam ("question") String answer) {

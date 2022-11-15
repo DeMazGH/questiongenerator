@@ -3,31 +3,31 @@ package pro.sky.question_generator.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.question_generator.exeptions.ServiceDoesNotHaveEnoughQuestionsException;
 import pro.sky.question_generator.model.Question;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static pro.sky.question_generator.service.ServiceConstant.*;
 
 @ExtendWith(MockitoExtension.class)
 class ExaminerServiceImplTest {
 
-    private ExaminerService out;
+    @InjectMocks
+    private ExaminerServiceImpl out;
     @Mock
     private QuestionService questionServiceMock;
-    Set<Question> questionSet;
+    private Set<Question> questionSet;
 
     @BeforeEach
     public void setUp() {
-        out = new ExaminerServiceImpl(questionServiceMock);
-
         questionSet = new HashSet<>();
         questionSet.add(OBJ_QUESTION_1);
         questionSet.add(OBJ_QUESTION_2);
@@ -47,15 +47,14 @@ class ExaminerServiceImplTest {
     void shouldReturnCollectionWithCorrectSizeInMethodGetQuestions() {
         Mockito.when(questionServiceMock.getAll()).thenReturn(questionSet);
 
-        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(getRandomQuestion());
+        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_QUESTION_2);
+        assertEquals(AMOUNT_1, out.getQuestions(AMOUNT_1).size());
 
-        Collection<Question> actual = out.getQuestions(AMOUNT_5);
-        assertEquals(AMOUNT_5, actual.size());
-    }
+        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_QUESTION_2, OBJ_QUESTION_3, OBJ_QUESTION_5);
+        assertEquals(AMOUNT_3, out.getQuestions(AMOUNT_3).size());
 
-    private Question getRandomQuestion() {
-        Question[] questionArray = questionSet.toArray(new Question[0]);
-        Random random = new Random();
-        return questionArray[random.nextInt(questionSet.size())];
+        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_QUESTION_2, OBJ_QUESTION_3, OBJ_QUESTION_5,
+                OBJ_QUESTION_1, OBJ_QUESTION_4);
+        assertEquals(AMOUNT_5, out.getQuestions(AMOUNT_5).size());
     }
 }

@@ -4,14 +4,13 @@ import org.springframework.stereotype.Service;
 import pro.sky.question_generator.exeptions.ServiceDoesNotHaveEnoughQuestionsException;
 import pro.sky.question_generator.model.Question;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
-    QuestionService questionService;
+    private final QuestionService questionService;
 
     public ExaminerServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
@@ -23,8 +22,7 @@ public class ExaminerServiceImpl implements ExaminerService {
             throw new ServiceDoesNotHaveEnoughQuestionsException("В сервисе нет запрошенного количества вопросов");
         }
 
-        Collection<Question> questions = new ArrayList<>();
-
+        Collection<Question> questions = new HashSet<>();
         while (amount > questions.size()) {
             questions.add(questionService.getRandomQuestion());
         }
