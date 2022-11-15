@@ -1,5 +1,6 @@
 package pro.sky.question_generator.service;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pro.sky.question_generator.exeptions.ServiceDoesNotHaveEnoughQuestionsException;
 import pro.sky.question_generator.model.Question;
@@ -12,7 +13,7 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     private final QuestionService questionService;
 
-    public ExaminerServiceImpl(QuestionService questionService) {
+    public ExaminerServiceImpl(@Qualifier("javaQuestionService") QuestionService questionService) {
         this.questionService = questionService;
     }
 

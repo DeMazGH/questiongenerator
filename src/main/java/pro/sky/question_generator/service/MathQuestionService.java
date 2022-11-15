@@ -9,13 +9,13 @@ import java.util.Random;
 import java.util.Set;
 
 @Service
-public class JavaQuestionService implements QuestionService {
+public class MathQuestionService implements QuestionService {
 
-    private final Set<Question> questions;
+    private final Set<Question> mathQuestions;
     private final Random random = new Random();
 
-    public JavaQuestionService() {
-        this.questions = new HashSet<>();
+    public MathQuestionService() {
+        this.mathQuestions = new HashSet<>();
     }
 
     @Override
@@ -27,24 +27,24 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question add(Question question) {
-        questions.add(question);
+        mathQuestions.add(question);
         return question;
     }
 
     @Override
     public Question remove(Question question) {
-        questions.remove(question);
+        mathQuestions.remove(question);
         return question;
     }
 
     @Override
     public Collection<Question> getAll() {
-        return Set.copyOf(questions);
+        return Set.copyOf(mathQuestions);
     }
 
     @Override
     public Question getRandomQuestion() {
-        Question[] questionArray = questions.toArray(new Question[0]);
-        return questionArray[random.nextInt(questions.size())];
+        Question[] questionArray = mathQuestions.toArray(new Question[0]);
+        return questionArray[random.nextInt(mathQuestions.size())];
     }
 }
