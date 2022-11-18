@@ -1,4 +1,4 @@
-package pro.sky.question_generator.service;
+package pro.sky.question_generator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,13 +9,15 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.question_generator.exeptions.ServiceDoesNotHaveEnoughQuestionsException;
 import pro.sky.question_generator.model.Question;
+import pro.sky.question_generator.service.ExaminerServiceImpl;
+import pro.sky.question_generator.service.QuestionService;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static pro.sky.question_generator.service.ServiceConstant.*;
+import static pro.sky.question_generator.Constant.*;
 
 @ExtendWith(MockitoExtension.class)
 class ExaminerServiceImplTest {
@@ -29,11 +31,11 @@ class ExaminerServiceImplTest {
     @BeforeEach
     public void setUp() {
         questionSet = new HashSet<>();
-        questionSet.add(OBJ_JAVA_QUESTION_1);
-        questionSet.add(OBJ_JAVA_QUESTION_2);
-        questionSet.add(OBJ_JAVA_QUESTION_3);
-        questionSet.add(OBJ_JAVA_QUESTION_4);
-        questionSet.add(OBJ_JAVA_QUESTION_5);
+        questionSet.add(OBJ_QUESTION_1);
+        questionSet.add(OBJ_QUESTION_2);
+        questionSet.add(OBJ_QUESTION_3);
+        questionSet.add(OBJ_QUESTION_4);
+        questionSet.add(OBJ_QUESTION_5);
     }
 
     @Test
@@ -47,14 +49,14 @@ class ExaminerServiceImplTest {
     void shouldReturnCollectionWithCorrectSizeInMethodGetQuestions() {
         Mockito.when(questionServiceMock.getAll()).thenReturn(questionSet);
 
-        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_JAVA_QUESTION_2);
+        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_QUESTION_2);
         assertEquals(AMOUNT_1, out.getQuestions(AMOUNT_1).size());
 
-        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_JAVA_QUESTION_2, OBJ_JAVA_QUESTION_3, OBJ_JAVA_QUESTION_5);
+        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_QUESTION_2, OBJ_QUESTION_3, OBJ_QUESTION_5);
         assertEquals(AMOUNT_3, out.getQuestions(AMOUNT_3).size());
 
-        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_JAVA_QUESTION_2, OBJ_JAVA_QUESTION_3, OBJ_JAVA_QUESTION_5,
-                OBJ_JAVA_QUESTION_1, OBJ_JAVA_QUESTION_4);
+        Mockito.when(questionServiceMock.getRandomQuestion()).thenReturn(OBJ_QUESTION_2, OBJ_QUESTION_3, OBJ_QUESTION_5,
+                OBJ_QUESTION_1, OBJ_QUESTION_4);
         assertEquals(AMOUNT_5, out.getQuestions(AMOUNT_5).size());
     }
 }

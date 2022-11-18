@@ -11,8 +11,12 @@ import java.util.Random;
 @Service
 public class MathQuestionService implements QuestionService {
 
-    private final QuestionRepository questionRepository = new MathQuestionRepository();
+    private final QuestionRepository questionRepository;
     private final Random random = new Random();
+
+    public MathQuestionService(QuestionRepository questionRepository) {
+        this.questionRepository = questionRepository;
+    }
 
     @Override
     public Question add(String question, String answer) {

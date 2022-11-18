@@ -3,7 +3,6 @@ package pro.sky.question_generator.repository;
 import org.springframework.stereotype.Repository;
 import pro.sky.question_generator.model.Question;
 
-import javax.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,12 +14,6 @@ public class JavaQuestionRepository implements QuestionRepository {
 
     public JavaQuestionRepository() {
         this.questions = new HashSet<>();
-    }
-
-    @Override
-    @PostConstruct
-    public void init() {
-        // здесь можно заполнить репозиторий данными сразу после его создания Spring
     }
 
     @Override

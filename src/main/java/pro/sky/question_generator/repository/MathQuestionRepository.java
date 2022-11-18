@@ -2,7 +2,6 @@ package pro.sky.question_generator.repository;
 
 import pro.sky.question_generator.model.Question;
 
-import javax.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,12 +12,6 @@ public class MathQuestionRepository implements QuestionRepository {
 
     public MathQuestionRepository() {
         this.questions = new HashSet<>();
-    }
-
-    @Override
-    @PostConstruct
-    public void init() {
-        // здесь можно заполнить репозиторий данными сразу после его создания Spring
     }
 
     @Override
