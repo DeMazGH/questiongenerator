@@ -7,7 +7,6 @@ import pro.sky.question_generator.model.Question;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Random;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {

@@ -2,7 +2,6 @@ package pro.sky.question_generator.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.question_generator.model.Question;
-import pro.sky.question_generator.repository.JavaQuestionRepository;
 import pro.sky.question_generator.repository.QuestionRepository;
 
 import java.util.Collection;

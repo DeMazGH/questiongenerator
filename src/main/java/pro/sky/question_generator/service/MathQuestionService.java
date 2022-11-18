@@ -2,7 +2,6 @@ package pro.sky.question_generator.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.question_generator.model.Question;
-import pro.sky.question_generator.repository.MathQuestionRepository;
 import pro.sky.question_generator.repository.QuestionRepository;
 
 import java.util.Collection;
@@ -12,6 +11,7 @@ import java.util.Random;
 public class MathQuestionService implements QuestionService {
 
     private final QuestionRepository questionRepository;
+
     private final Random random = new Random();
 
     public MathQuestionService(QuestionRepository questionRepository) {
