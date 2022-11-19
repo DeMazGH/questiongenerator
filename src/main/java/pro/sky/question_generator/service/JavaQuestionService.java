@@ -1,5 +1,6 @@
 package pro.sky.question_generator.service;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pro.sky.question_generator.model.Question;
 import pro.sky.question_generator.repository.QuestionRepository;
@@ -14,7 +15,7 @@ public class JavaQuestionService implements QuestionService {
 
     private final Random random = new Random();
 
-    public JavaQuestionService(QuestionRepository questionRepository) {
+    public JavaQuestionService(@Qualifier("javaQuestionRepository") QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 

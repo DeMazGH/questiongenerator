@@ -1,11 +1,13 @@
 package pro.sky.question_generator.repository;
 
+import org.springframework.stereotype.Repository;
 import pro.sky.question_generator.model.Question;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+@Repository
 public class MathQuestionRepository implements QuestionRepository {
 
     private final Set<Question> questions;
